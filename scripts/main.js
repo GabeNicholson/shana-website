@@ -1,13 +1,23 @@
 
-var modal = document.getElementById("myModal")
-var img = document.getElementById("image1")
-var span = document.getElementsByClassName("close")[0]
-let realImage = document.getElementById("realImage")
+modal = document.getElementById("myModal")
+img = document.getElementById("image1")
+span = document.getElementsByClassName("close")[0]
+realImage = document.getElementById("realImage")
+const imageContainer = document.getElementById("image-container")
+const numImages = 6
 
-img.onclick = function() {
+for (let i = 1; i <= numImages; i++) {
+  const imgElement = document.createElement('img');
+  imgElement.id = `image${i}`
+  imgElement.src = "images/question_mark.avif"
+  imgElement.className = "question-mark-image"
+  imgElement.alt = ''
+  imageContainer.appendChild(imgElement)
+  imgElement.addEventListener('click', function() {
     modal.style.display = "block"
-    realImage.src = "images/1.png"
+    realImage.src = `images/${i}.png`
     realImage.className = "real-image"
+  })
 }
 
 // Close the modal when the 'x' is clicked
